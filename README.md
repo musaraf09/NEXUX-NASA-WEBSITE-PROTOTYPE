@@ -55,20 +55,20 @@ Add the technologies actually used in your project:
 
 ## ✦ LIVE DEMO
 
-🚀 **Explore the project:** [LIVE WEBSITE LINK](YOUR-DEPLOYED-WEBSITE-URL)
+🚀 **Explore the project:** [LIVE WEBSITE LINK](https://nexus-9di7qr51h-newstore7887-1589.vercel.app/)
 
 ## ✦ RUN LOCALLY
 
 Clone the repository:
 
 ```bash
-git clone YOUR-GITHUB-REPOSITORY-URL
+git clone https://github.com/musaraf09/NEXUX-NASA-WEBSITE-PROTOTYPE.git
 ```
 
 Navigate to the project directory:
 
 ```bash
-cd YOUR-PROJECT-FOLDER
+cd NEXUX-NASA-WEBSITE-PROTOTYPE.git
 ```
 
 Open `index.html` in your browser or use VS Code Live Server if required.
@@ -81,7 +81,7 @@ Currently a prototype. More improvements, visual enhancements, and interactive f
 
 Created with curiosity, creativity, and a passion for technology.
 
-**Designed & Developed by [YOUR NAME]**
+**Designed & Developed by [MUSARAF HUSAIN]**
 
 ---
 
