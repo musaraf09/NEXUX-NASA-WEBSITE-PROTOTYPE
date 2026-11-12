@@ -268,9 +268,10 @@ h2 { font-size: clamp(30px,3.3vw,48px); line-height: 1.12; font-weight: 400; let
 .fullscreen-notice { position: absolute; bottom: 70px; right: 5%; max-width: 330px; display: flex; gap: 15px; align-items: center; padding: 14px; border: 1px solid #544839; background: #151214; color: #d1c9c0; font-size: 11px; line-height: 1.6; }
 .fullscreen-notice button { color: inherit; background: transparent; border: none; }
 .hero:fullscreen { height: 100vh; max-height: none; }
-.scene-fallback { position: absolute; inset: 0; background: radial-gradient(ellipse at 72% 50%,#21120a 0%,#07080c 55%); }
-.scene-fallback::before { content: ''; position: absolute; left: 72%; top: 49%; transform: translate(-50%,-50%) rotate(-8deg); width: 31vh; height: 31vh; background: black; border-radius: 50%; border: 3px solid #f6bc74; box-shadow: 0 0 16px #ef9334,0 0 42px #d7672a70,inset 0 0 7px #efa144; }
-.scene-fallback::after { content: ''; position: absolute; left: 72%; top: 49%; width: 65vh; height: 8vh; transform: translate(-50%,-50%) rotate(-8deg); border-radius: 50%; border: 6px solid #de914b; box-shadow: 0 0 22px #dc843b80; }
+.scene-fallback { position: absolute; inset: -2%; background: #06070a url('/black-hole.png') center center / cover no-repeat; animation: cosmic-drift 35s ease-in-out infinite alternate; translate: var(--pointer-x, 0px) var(--pointer-y, 0px); transition: translate .8s ease-out; }
+.scene-paused .scene-fallback { animation-play-state: paused; }
+.is-immersive .scene-fallback { background-size: auto 115%; background-position: 82% center; }
+@keyframes cosmic-drift { from { transform: scale(1) translate(0, 0); } to { transform: scale(1.045) translate(-.6%, .3%); } }
 @media (min-width: 1400px) {
   .hero-content { top: 24%; }
   .hero-description { font-size: 14px; }
@@ -335,7 +336,8 @@ h2 { font-size: clamp(30px,3.3vw,48px); line-height: 1.12; font-weight: 400; let
   .immersive-top .eyebrow { font-size: 8px; }
   .immersive-description { left: 6%; right: 6%; bottom: 80px; }
   .is-immersive { height: 100svh; min-height: 600px; }
-  .scene-fallback::before,.scene-fallback::after { left: 50%; top: 67%; }
+  .scene-fallback { background-size: auto 68%; background-position: 73% 95%; background-color: #06070a; }
+  .is-immersive .scene-fallback { background-size: auto 90%; background-position: 73% 60%; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

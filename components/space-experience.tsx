@@ -53,7 +53,12 @@ export function SpaceExperience() {
   return (
     <main>
       <section ref={hero} className={`hero ${immersive ? 'is-immersive' : ''}`} id="explore" aria-label="Black hole exploration">
-        <div className="scene"><BlackHoleScene paused={paused} intensity={intensity} immersive={immersive} /></div>
+        <div className={`scene ${paused ? 'scene-paused' : ''}`} style={{ filter: `brightness(${0.65 + intensity * 0.3})` }} onPointerMove={event => {
+          if (paused) return
+          const bounds = event.currentTarget.getBoundingClientRect()
+          event.currentTarget.style.setProperty('--pointer-x', `${((event.clientX - bounds.left) / bounds.width - 0.5) * 8}px`)
+          event.currentTarget.style.setProperty('--pointer-y', `${((event.clientY - bounds.top) / bounds.height - 0.5) * 8}px`)
+        }}><BlackHoleScene paused={paused} intensity={intensity} immersive={immersive} /></div>
         <div className="scene-shade" />
         <header className="site-header">
           <a href="#explore" className="brand" aria-label="NASA-inspired Beyond home"><img src="/nasa.svg" alt="NASA" width="82" height="24" /><span className="brand-divider" /><span className="brand-label">BEYOND</span></a>

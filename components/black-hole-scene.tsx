@@ -1,7 +1,7 @@
 'use client'
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { Component, useMemo, useRef, type ReactNode } from 'react'
+import { Component, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { ShaderMaterial, Vector2 } from 'three'
 
 const vertexShader = `
@@ -120,6 +120,16 @@ class SceneBoundary extends Component<{ children: ReactNode }, { failed: boolean
 }
 
 export default function BlackHoleScene(props: SceneProps) {
+  const [supported, setSupported] = useState(false)
+  useEffect(() => {
+    const probe = document.createElement('canvas')
+    const context = probe.getContext('webgl2')
+    setSupported(Boolean(context))
+    context?.getExtension('WEBGL_lose_context')?.loseContext()
+  }, [])
+
+  if (!supported) return <div className="scene-fallback" role="img" aria-label="Cinematic black hole visualization with a glowing amber accretion disk" />
+
   return (
     <SceneBoundary>
       <Canvas dpr={[1, 1.5]} gl={{ antialias: false, alpha: false, powerPreference: 'high-performance' }} fallback={<div className="scene-fallback" />} aria-label="Animated artistic 3D visualization of a black hole and its glowing accretion disk">
